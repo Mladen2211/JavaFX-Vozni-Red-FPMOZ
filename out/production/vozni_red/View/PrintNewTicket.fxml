@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonType?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DialogPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<DialogPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="585.0" prefWidth="480.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.TicketController">
+    <header>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="480.0" />
+    </header>
+    <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="320.0">
+            <children>
+                <GridPane layoutY="6.0" prefHeight="513.0" prefWidth="480.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="175.0" minWidth="10.0" prefWidth="15.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="207.0" minWidth="10.0" prefWidth="173.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="306.0" minWidth="10.0" prefWidth="292.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints maxHeight="46.0" minHeight="10.0" prefHeight="42.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="32.0" minHeight="10.0" prefHeight="32.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="91.0" minHeight="10.0" prefHeight="74.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="53.0" minHeight="10.0" prefHeight="43.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="311.0" minHeight="10.0" prefHeight="311.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="140.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+                        <Label text="Odaberite  vožnju" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+                  <Label text="Odaberite cijenu po kolometru" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                     <children>
+                        <Label layoutX="47.0" layoutY="147.0" text="Kartu izdao:" />
+                        <ComboBox fx:id="userSelect" layoutX="78.0" layoutY="175.0" prefWidth="150.0" />
+                              <Button fx:id="addBtn" layoutX="190.0" layoutY="271.0" mnemonicParsing="false" onAction="#createTicket" prefHeight="25.0" prefWidth="88.0" text="Ispis" />
+                              <Label fx:id="successTicket" layoutX="18.0" layoutY="254.0" prefHeight="17.0" prefWidth="183.0" text="Uspješno izdana karta!" textFill="#4bcd5a" visible="false">
+                                  <font>
+                                      <Font name="System Bold" size="12.0" />
+                                  </font>
+                              </Label>
+                              <Label fx:id="errorTicket" layoutX="18.0" layoutY="231.0" text="Dogodila se greška pri ispisivanju!" textFill="#fc0303" visible="false">
+                                  <font>
+                                      <Font name="System Bold" size="13.0" />
+                                  </font>
+                              </Label>
+                     </children>
+                  </Pane>
+                  <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                     <children>
+                        <ComboBox fx:id="priceSelect" layoutX="7.0" layoutY="11.0" prefHeight="25.0" prefWidth="220.0" />
+                     </children>
+                  </Pane>
+                  <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                     <children>
+                        <ComboBox fx:id="routeSelect" layoutX="6.0" layoutY="2.0" prefHeight="25.0" prefWidth="221.0" />
+                     </children>
+                  </Pane>
+                    </children>
+                </GridPane>
+            </children></AnchorPane>
+    </content>
+    <expandableContent>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="320.0" />
+    </expandableContent>
+    <buttonTypes>
+        <ButtonType fx:constant="CLOSE" />
+    </buttonTypes>
+</DialogPane>

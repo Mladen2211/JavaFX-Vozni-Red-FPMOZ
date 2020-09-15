@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AdminController">
+   <children>
+      <Pane prefHeight="1080.0" prefWidth="1920.0">
+         <children>
+            <ToolBar prefHeight="54.0" prefWidth="1920.0" style="-fx-background-color: purple;">
+               <items>
+                  <Label contentDisplay="TOP" prefHeight="32.0" prefWidth="1845.0" text="ADMIN PANEL" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="logoutBtn" mnemonicParsing="false" onAction="#logout" style="-fx-background-color: red;" text="Odjava" textFill="#fffafa" />
+               </items>
+            </ToolBar>
+            <Button fx:id="newUser" layoutX="61.0" layoutY="79.0" mnemonicParsing="false" onAction="#openNewUserDialog" prefHeight="158.0" prefWidth="194.0" style="-fx-background-color: A484AE;" text="Dodaj korisnika" />
+            <Button fx:id="newCity" layoutX="332.0" layoutY="79.0" mnemonicParsing="false" onAction="#openNewCity" prefHeight="158.0" prefWidth="194.0" style="-fx-background-color: A484AE;" text="Dodaj novi grad" />
+            <Button layoutX="622.0" layoutY="79.0" mnemonicParsing="false" onAction="#openNewprice" prefHeight="158.0" prefWidth="194.0" style="-fx-background-color: A484AE;" text="Dodaj akcijsku cijenu" />
+            <Button layoutX="1228.0" layoutY="79.0" mnemonicParsing="false" onAction="#openNewRoute" prefHeight="158.0" prefWidth="194.0" style="-fx-background-color: A484AE;" text="Dodaj novu putničku rutu" />
+            <Button layoutX="921.0" layoutY="79.0" mnemonicParsing="false" onAction="#openNewCompany" prefHeight="158.0" prefWidth="194.0" style="-fx-background-color: A484AE;" text="Dodaj novo prevozničko društvo" />
+            <Button layoutX="1592.0" layoutY="79.0" mnemonicParsing="false" onAction="#openTicket" prefHeight="158.0" prefWidth="194.0" style="-fx-background-color: A484AE;" text="Izdaj kartu" />
+            <TableView fx:id="tableView" editable="true" layoutX="644.0" layoutY="255.0" prefHeight="674.0" prefWidth="1142.0">
+               <columns>
+                  <TableColumn fx:id="tableId" minWidth="0.0" prefWidth="73.0" text="ID" />
+                  <TableColumn fx:id="tableDeparture" prefWidth="219.0" text="Mjesto polaska" />
+                  <TableColumn fx:id="tableArrival" prefWidth="232.0" text="Destinacija" />
+                  <TableColumn fx:id="tablePrice" prefWidth="223.0" text="Cijena karte" />
+                  <TableColumn fx:id="tableTicketIssuer" editable="false" prefWidth="162.0" sortType="DESCENDING" sortable="false" text="Izdao" />
+                  <TableColumn fx:id="tableTicketIssuer1" editable="false" prefWidth="232.0" sortType="DESCENDING" sortable="false" />
+               </columns>
+            </TableView>
+            <TabPane layoutX="24.0" layoutY="277.0" prefHeight="410.0" prefWidth="582.0" tabClosingPolicy="UNAVAILABLE">
+              <tabs>
+                <Tab text="Korisnici">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TableView fx:id="userTableView" layoutX="-1.0" onMouseClicked="#getUser" prefHeight="340.0" prefWidth="582.0">
+                                <columns>
+                                  <TableColumn fx:id="userTableId" prefWidth="36.0" text="Id" />
+                                  <TableColumn fx:id="userTableName" prefWidth="167.0" text="Ime" />
+                                    <TableColumn fx:id="userTablelastName" prefWidth="127.0" text="Prezime" />
+                                    <TableColumn fx:id="userTableUserNAme" prefWidth="193.0" text="Korisničko ime" />
+                                </columns>
+                              </TableView>
+                              <Pane layoutX="-5.0" layoutY="339.0" prefHeight="44.0" prefWidth="588.0">
+                                 <children>
+                                    <Button fx:id="deleteUserBtn" layoutX="294.0" layoutY="10.0" mnemonicParsing="false" onAction="#deleteUser" style="-fx-background-color: red;" text="Obriši" textFill="WHITE" visible="false" />
+                                    <Label fx:id="selectedUser" layoutX="92.0" layoutY="14.0" prefHeight="17.0" prefWidth="176.0" text="Odabrani korisnik" visible="false" />
+                                 </children>
+                              </Pane>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                <Tab text="Gradovi">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="381.0" prefWidth="470.0">
+                           <children>
+                              <TableView fx:id="cityTableView" prefHeight="381.0" prefWidth="582.0">
+                                <columns>
+                                  <TableColumn fx:id="cityTableId" prefWidth="75.0" text="id" />
+                                  <TableColumn fx:id="cityTableName" prefWidth="506.0" text="naziv" />
+                                </columns>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                  <Tab text="Cijene">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TableView fx:id="priceTableView" onMouseClicked="#selectPrice" prefHeight="343.0" prefWidth="582.0">
+                                <columns>
+                                  <TableColumn fx:id="priceTableId" prefWidth="110.0" text="id" />
+                                  <TableColumn fx:id="priceTableType" prefWidth="110.0" text="tip" />
+                                    <TableColumn fx:id="priceTablePrice" prefWidth="125.0" text="cijena" />
+                                </columns>
+                              </TableView>
+                              <Label fx:id="selPriceId" layoutX="14.0" layoutY="350.0" text="ID" visible="false" />
+                              <TextField fx:id="selPriceType" layoutX="37.0" layoutY="346.0" text="Tip" visible="false" />
+                              <TextField fx:id="selPriceValue" layoutX="208.0" layoutY="346.0" text="Cijena" visible="false" />
+                              <Button fx:id="updatePrice" onAction="#updatePrice" layoutX="406.0" layoutY="346.0" mnemonicParsing="false" text="Ažuriraj cijenu" visible="false" />
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+                  <Tab text="Prevoznička društva">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TableView fx:id="companyTableView" layoutY="-1.0" prefHeight="383.0" prefWidth="582.0">
+                                <columns>
+                                  <TableColumn fx:id="companyTableId" prefWidth="75.0" text="id" />
+                                  <TableColumn fx:id="companyTableCity" prefWidth="75.0" text="Sjedište" />
+                                    <TableColumn fx:id="companyTableName" prefWidth="156.0" text="Naziv" />
+                                </columns>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+                  <Tab text="Rute">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TableView fx:id="routeTableView" layoutX="-1.0" prefHeight="378.0" prefWidth="582.0">
+                                <columns>
+                                  <TableColumn fx:id="routeTableId" prefWidth="75.0" text="id" />
+                                  <TableColumn fx:id="routeTableDeparture" prefWidth="75.0" text="Polazak" />
+                                    <TableColumn fx:id="routeTableArrival" prefWidth="75.0" text="Dolazak" />
+                                    <TableColumn fx:id="routeTableDistance" prefWidth="75.0" text="Udaljenost" />
+                                    <TableColumn fx:id="routeTableTicketDepartureTime" prefWidth="117.0" text="Vijeme polaska" />
+                                    <TableColumn fx:id="routeTableTicketArrivalTime" prefWidth="145.0" text="Vijeme dolaska" />
+                                </columns>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+              </tabs>
+            </TabPane>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
